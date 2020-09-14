@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:posts_app/home.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:posts_app/bloc/posts_bloc.dart';
+import 'package:posts_app/pages/home.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,9 +12,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
 
-      home: MyHomePage(),
+      home: BlocProvider<PostBloc>(
+        create: (context)=>PostBloc(),
+          child: MyHomePage()),
     );
   }
 }
